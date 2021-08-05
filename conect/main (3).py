@@ -70,6 +70,7 @@ def delete():
     cur.execute(f"""delete from school where name='{delete_sm}'""")
     time.sleep(0.5)
     print("Success")
+    ask()
 
 
 def ask():
