@@ -9,7 +9,6 @@ con = psycopg2.connect(
     user="postgres",
     password="adgjmptw",
     port=5432)
-
 # cursor
 cur = con.cursor()
 
@@ -66,11 +65,19 @@ def settings():
     ask()
 
 
+def delete():
+    delete_sm = input("Enter the name which you wanna delete : ")
+    cur.execute(f"""delete from school where name='{delete_sm}'""")
+    time.sleep(0.5)
+    print("Success")
+
+
 def ask():
     choice = int(input("1.Register\n"
                        "2.Group list\n"
                        "3.Settings\n"
-                       "4.Exit : "))
+                       "4.Delete\n"
+                       "5.Exit : "))
     if choice == 1:
         reg()
 
@@ -79,6 +86,9 @@ def ask():
 
     elif choice == 3:
         settings()
+
+    elif choice == 4:
+        delete()
 
 
 if __name__ == '__main__':
