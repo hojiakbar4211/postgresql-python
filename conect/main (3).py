@@ -38,6 +38,7 @@ def group_list():
             print("Age : ", gr[3])
             print("Group : ", gr[4])
             print()
+
     ask()
 
 
@@ -57,11 +58,13 @@ def settings():
         time.sleep(1)
         print("\nPhone number changed successfully!!! \n")
     if change == 3:
+        namee = input("Enter your current name : ")
         grr = input("Enter your current Group : ")
         changed_val = input("Enter new group: ")
-        cur.execute(f"""UPDATE school SET s_group = '{changed_val}' WHERE s_group ='{grr}';""")
+        cur.execute(f"""UPDATE school SET s_group = '{changed_val}' WHERE s_group ='{grr}' and name='{namee}';""")
         time.sleep(1)
         print("\nGroup changed successfully!!! \n")
+    con.commit()
     ask()
 
 
@@ -70,6 +73,7 @@ def delete():
     cur.execute(f"""delete from school where name='{delete_sm}'""")
     time.sleep(0.5)
     print("Success")
+    con.commit()
     ask()
 
 
